@@ -24,7 +24,6 @@ end
 
 opt.parse!(ARGV)
 
-date = Date.new(options[:year], options[:month], 1)
 first_day = Date.new(options[:year], options[:month], 1)
 last_day = Date.new(options[:year], options[:month], -1)
 
@@ -33,9 +32,9 @@ puts "日 月 火 水 木 金 土"
 
 first_day.wday.times { print "   " }
 
-(first_day..last_day).each do |everyday|
-  print format("%2d ", everyday.day)
-  if everyday.wday == 6
-    puts "\n"
+(first_day..last_day).each do |date|
+  print format("%2d ", date.day)
+  if date.wday == 6
+    puts ""
   end
 end

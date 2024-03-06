@@ -2,7 +2,6 @@
 
 require 'optparse'
 require 'date'
-
 options = { year: Date.today.year, month: Date.today.month }
 opt = OptionParser.new
 
@@ -11,6 +10,7 @@ opt.on('-y YEAR', Integer) do |year|
     options[:year] = year
   else
     puts '年の指定が範囲外です'
+    exit(1)
   end
 end
 
@@ -19,6 +19,7 @@ opt.on('-m MONTH', Integer) do |month|
     options[:month] = month
   else
     puts '月の指定が範囲外です'
+    exit(1)
   end
 end
 

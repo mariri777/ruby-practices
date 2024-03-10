@@ -9,8 +9,8 @@ opt.on('-y YEAR', Integer) do |year|
   if (1970..2100).cover?(year)
     options[:year] = year
   else
-    puts '年の指定が範囲外です'
-    exit(1)
+    warn '年の指定が範囲外です'
+    exit 1
   end
 end
 
@@ -18,8 +18,8 @@ opt.on('-m MONTH', Integer) do |month|
   if (1..12).cover?(month)
     options[:month] = month
   else
-    puts '月の指定が範囲外です'
-    exit(1)
+    warn '月の指定が範囲外です'
+    exit 1
   end
 end
 

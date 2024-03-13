@@ -1,8 +1,9 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 scores = []
 ARGV[0].split(',').each do |s|
-  if s == "X"
+  if s == 'X'
     scores << 10
   else
     scores << s.to_i
@@ -21,13 +22,14 @@ scores.each.with_index(0) do |score, score_index|
     spare = throw_index == 2 && scores[score_index - 1] + score == 10
     next_frame = strike || throw_index == 2
 
-    if strike
-      total_score += score + scores[score_index + 1] + scores[score_index + 2]
-    elsif spare
-      total_score += score + scores[score_index + 1]
-    else
-      total_score += score
-    end
+    total_score +=
+      if strike
+        score + scores[score_index + 1] + scores[score_index + 2]
+      elsif spare
+        score + scores[score_index + 1]
+      else
+        score
+      end
   end
 
   if next_frame

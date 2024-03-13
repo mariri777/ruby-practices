@@ -22,13 +22,14 @@ scores.each.with_index(0) do |score, score_index|
     spare = throw_index == 2 && scores[score_index - 1] + score == 10
     next_frame = strike || throw_index == 2
 
+    total_score += score
     total_score +=
       if strike
-        score + scores[score_index + 1] + scores[score_index + 2]
+        scores[score_index + 1] + scores[score_index + 2]
       elsif spare
-        score + scores[score_index + 1]
+        scores[score_index + 1]
       else
-        score
+        0
       end
   end
 
